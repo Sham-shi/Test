@@ -1,9 +1,12 @@
-﻿using Lessons.FactoryMethod;
+﻿
+using Lessons.Builder;
 
-var factoryMilk = new FactoryMilk();
-var factoryApple = new FactoryApple();
+var documentBuilder = new DocumentBuilder();
 
-var milk = factoryMilk.CreateProduct();
-var apple = factoryApple.CreateProduct();
+var document = documentBuilder
+                .SetTitle("title")
+                .SetBody("bode")
+                .SetFooter("footer")
+                .Build();
 
-
+//Fluent
