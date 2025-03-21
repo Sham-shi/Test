@@ -2,11 +2,12 @@
 using Lessons.Builder;
 
 var documentBuilder = new DocumentBuilder();
+var director = new Director(documentBuilder);
+var document = director.Create();
 
-var document = documentBuilder
-                .SetTitle("title")
-                .SetBody("bode")
-                .SetFooter("footer")
-                .Build();
+//паттерн прототип
+var document1 = document.Clone();
 
-//Fluent
+
+//копирование с помощью сериализации
+var documentBuilder1 = documentBuilder.Copy();
