@@ -1,21 +1,9 @@
 ﻿
-using Lessons.Observer;
+using Lessons.Command;
 
-var observer1 = new Observer("observer1");
-var observer2 = new Observer("observer2");
-var observer3 = new Observer("observer3");
-
-var observable = new Observable();
-
-observable.AddObserver(observer1);
-observable.AddObserver(observer2);
-observable.AddObserver(observer3);
-
-observable.Name = "Not Empty";
-
-observable.NotifyObserver();
-observable.RemoveObserver(observer3);
-
-observable.Name = "Some Name";
-
-observable.NotifyObserver();
+var addObject = new AddObject(1, 1, 1, "rock");
+var invoker = new Invoker(addObject);
+var changeCoordinateObject = new ChangeCoordinateObject(1, 2, 3);
+invoker.AddCommand(changeCoordinateObject);
+invoker.UndoCommand();
+invoker.UndoCommand();
