@@ -1,13 +1,11 @@
 ﻿
-using Lessons.Builder;
+using Lessons.Strategy.Example2;
 
-var documentBuilder = new DocumentBuilder();
-var director = new Director(documentBuilder);
-var document = director.Create();
+var projectFile = new ProjectFile();
+var projectServer = new ProjectServer();
 
-//паттерн прототип
-var document1 = document.Clone();
+var context = new Context();
+context.Execute("");
 
-
-//копирование с помощью сериализации
-var documentBuilder1 = documentBuilder.Copy();
+context.ChangeProjectSave(projectServer);
+context.Execute("");
