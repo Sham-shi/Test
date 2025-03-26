@@ -5,7 +5,7 @@ namespace Lessons.Observer;
 
 public interface IObservable
 {
-    void AddObserver(IObserver observer);
-    void RemoveObserver(IObserver observer);
-    void NotifyObserver();
+    public void AddObserver(IObserver observer);
+    public void RemoveObserver(IObserver observer);
+    public void NotifyObserver();
 }

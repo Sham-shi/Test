@@ -17,7 +17,7 @@ public class AddObject : Command
     }
     public override void Execute()
     {
-        Console.WriteLine($"Добавил объект " + _name);
+        Console.WriteLine($"Добавил объект {_name }");
     }
 
     public override void Undo()
@@ -26,6 +26,6 @@ public class AddObject : Command
         _y = 0;
         _z = 0;
 
-        Console.WriteLine($"Удалил объект " + _name);
+        Console.WriteLine($"Удалил объект {_name}");
     }
 }
