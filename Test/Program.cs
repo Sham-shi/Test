@@ -1,17 +1,13 @@
-﻿using Lessons.Iterator;
+﻿using Lessons.ChainOfResponsibility;
 
-var concreteAggregate = new ConcreteAggregate<int>();
+var basicSupportHandler = new BasicSupportHandler();
+var advancedSupportHandler = new AdvancedSupportHandler();
+var expertSupportHandler = new ExpertSupportHandler();
 
-concreteAggregate.AddItem(1);
-concreteAggregate.AddItem(2);
-concreteAggregate.AddItem(3);
-concreteAggregate.AddItem(4);
-concreteAggregate.AddItem(5);
+basicSupportHandler
+    .SetNextHandler(advancedSupportHandler)
+    .SetNextHandler(expertSupportHandler);
 
-var iterator = concreteAggregate.CreateIterator();
+var supportRequest = new SupportRequest(7);
 
-while(iterator.HasNext())
-{
-    var item = iterator.Next();
-    Console.WriteLine(item);
-}
+basicSupportHandler.HandlerRequest(supportRequest);
