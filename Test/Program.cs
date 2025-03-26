@@ -1,13 +1,12 @@
-﻿using Lessons.ChainOfResponsibility;
+﻿using Lessons.Mediator;
 
-var basicSupportHandler = new BasicSupportHandler();
-var advancedSupportHandler = new AdvancedSupportHandler();
-var expertSupportHandler = new ExpertSupportHandler();
+var myMainMediator = new MyMainMediator();
 
-basicSupportHandler
-    .SetNextHandler(advancedSupportHandler)
-    .SetNextHandler(expertSupportHandler);
+var colleague1 = new Colleague1(myMainMediator);
+var colleague2 = new Colleague2(myMainMediator);
 
-var supportRequest = new SupportRequest(7);
+myMainMediator.Colleague1 = colleague1;
+myMainMediator.Colleague2 = colleague2;
 
-basicSupportHandler.HandlerRequest(supportRequest);
+colleague1.Send("Hello");
+colleague2.Send("Bye-bye");
