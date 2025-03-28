@@ -1,8 +1,12 @@
-﻿using Lessons.Adapter;
+﻿using Lessons.Facade;
+using Lessons.Facade.SubSystem;
 
-var target = new Target();
-var client = new Client();
-var adapter = new Adapter();
+var subSystemA = new SubSystemA();
+var subSystemB = new SubSystemB();
+var subSystemC = new SubSystemC();
 
-client.Request(target);
-client.Request(adapter);
+var facade = new Facade(subSystemA, subSystemB, subSystemC);
+
+facade.Operation1();
+facade.Operation2();
+facade.Operation3();
