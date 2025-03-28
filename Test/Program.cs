@@ -1,22 +1,18 @@
-﻿using Lessons.Memento;
+﻿using Lessons.Visitor;
+using Lessons.Visitor.Clients;
+using Lessons.Visitor.Visitors;
 
-var hero = new Hero(3, 10);
-var gameHistory = new GameHistory();
+var bank = new Bank();
+var person = new Person();
+person.FIO = "Petrov Petr";
+person.AccNumber = "1122";
 
-hero.Shoot();
-hero.Shoot();
-hero.Shoot();
+var company = new Company();
+company.Title = "AAA Company";
+company.RegNumber = "3344";
 
-var history = hero.SaveState();
-gameHistory.Add(history);
+bank.Add(person);
+bank.Add(company);
 
-hero.Shoot();
-hero.Shoot();
-hero.Shoot();
-
-history = gameHistory.Pop();
-hero.RestoreState(history);
-
-hero.Shoot();
-hero.Shoot();
-hero.Shoot();
+var HTMLVisitor = new HTMLVisitor();
+bank.SaveDataBase(HTMLVisitor);
