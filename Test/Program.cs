@@ -1,7 +1,8 @@
-﻿using Lessons.Decorator;
+﻿using Lessons.Adapter;
 
+var target = new Target();
+var client = new Client();
+var adapter = new Adapter();
 
-var serverApi = new ServerApi();
-var validationReqest = new ValidationReqest(serverApi, "arg1", "arg2");
-
-validationReqest.Get();
+client.Request(target);
+client.Request(adapter);
