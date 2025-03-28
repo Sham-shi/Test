@@ -1,12 +1,22 @@
-﻿using Lessons.Mediator;
+﻿using Lessons.Memento;
 
-var myMainMediator = new MyMainMediator();
+var hero = new Hero(3, 10);
+var gameHistory = new GameHistory();
 
-var colleague1 = new Colleague1(myMainMediator);
-var colleague2 = new Colleague2(myMainMediator);
+hero.Shoot();
+hero.Shoot();
+hero.Shoot();
 
-myMainMediator.Colleague1 = colleague1;
-myMainMediator.Colleague2 = colleague2;
+var history = hero.SaveState();
+gameHistory.Add(history);
 
-colleague1.Send("Hello");
-colleague2.Send("Bye-bye");
+hero.Shoot();
+hero.Shoot();
+hero.Shoot();
+
+history = gameHistory.Pop();
+hero.RestoreState(history);
+
+hero.Shoot();
+hero.Shoot();
+hero.Shoot();
