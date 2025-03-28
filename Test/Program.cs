@@ -1,12 +1,20 @@
-﻿using Lessons.Facade;
-using Lessons.Facade.SubSystem;
+﻿using Lessons.Composite;
 
-var subSystemA = new SubSystemA();
-var subSystemB = new SubSystemB();
-var subSystemC = new SubSystemC();
+var settingsPanel = new SettingsPanel();
+var colorPanel = new ColorPanel();
+var symbol1 = new Symbol1();
 
-var facade = new Facade(subSystemA, subSystemB, subSystemC);
+var topPanel = new TopPanel();
+var symbolMenu = new SymbolMenu();
 
-facade.Operation1();
-facade.Operation2();
-facade.Operation3();
+topPanel.Add(settingsPanel);
+topPanel.Add(colorPanel);
+
+symbolMenu.Add(symbol1);
+
+var  window = new Window();
+
+window.Add(topPanel);
+window.Add(symbolMenu);
+
+window.Display();
