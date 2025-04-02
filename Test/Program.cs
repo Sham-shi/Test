@@ -1,11 +1,8 @@
-﻿using Lessons.Bridge.GameObjects;
-using Lessons.Bridge.Renders;
+﻿using Lessons.Singleton;
 
-var render2D = new Render2D();
-var grass = new Grass(render2D);
+var singleton = Singleton.GetInstance();
 
-grass.Draw();
+var singleton1 = Singleton.GetInstance();
 
-grass.Render = new Render3D();
-
-grass.Draw();
+Console.WriteLine(singleton.GetHashCode());
+Console.WriteLine(singleton1.GetHashCode());
