@@ -1,29 +1,11 @@
-﻿using Lessons.Flyweight;
-using Lessons.Flyweight.Context;
-using Lessons.Flyweight.Model;
+﻿using Lessons.Bridge.GameObjects;
+using Lessons.Bridge.Renders;
 
-var flowers = new List<Flower>();
+var render2D = new Render2D();
+var grass = new Grass(render2D);
 
-var flyweightFactory = new FlyweightFactory();
+grass.Draw();
 
-var list = new List<Point>();
+grass.Render = new Render3D();
 
-list.Add(new Point(1,1));
-
-var flowerModel = flyweightFactory.GetFlowerModel(list);
-
-var flower = new Flower(1, 10, flowerModel);
-flower.Display();
-
-flowers.Add(flower);
-
-var flowerModel1 = flyweightFactory.GetFlowerModel(list);
-
-var flower1 = new Flower(2, 10, flowerModel1);
-flower.Display();
-
-flowers.Add(flower1);
-
-flowers.RemoveAt(0);
-flowers.RemoveAt(1);
-flyweightFactory.RemoveFlowerModel(list);
+grass.Draw();
